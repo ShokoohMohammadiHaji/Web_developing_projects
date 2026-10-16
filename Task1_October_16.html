@@ -6,7 +6,7 @@
 
     <style>
         input[type="number"] {
-            width: 45px;
+            width: 100px;
             -moz-appearance: textfield;
             appearance: textfield;
         }
@@ -21,11 +21,9 @@
 
 <body>
 
-    <h2>Task 3 Calculator</h2>
+    <h2>Task 1 Calculator</h2>
 
-    <button id="increase1">+</button>
-    <input type="number" id="number1" value="0">
-    <button id="decrease1">-</button>
+    <input type="number" id="number1" placeholder="First number">
 
     <select id="operator">
         <option value="+">+</option>
@@ -34,35 +32,24 @@
         <option value="/">/</option>
     </select>
 
-    <button id="increase2">+</button>
-    <input type="number" id="number2" value="0">
-    <button id="decrease2">-</button>
+    <input type="number" id="number2" placeholder="Second number">
 
     <button id="calculate">=</button>
     <span id="result"></span>
 
     <script>
-        document.getElementById("increase1").onclick = function() {
-            document.getElementById("number1").stepUp();
-        };
-
-        document.getElementById("decrease1").onclick = function() {
-            document.getElementById("number1").stepDown();
-        };
-
-        document.getElementById("increase2").onclick = function() {
-            document.getElementById("number2").stepUp();
-        };
-
-        document.getElementById("decrease2").onclick = function() {
-            document.getElementById("number2").stepDown();
-        };
-
         document.getElementById("calculate").onclick = function() {
             let a = Number(document.getElementById("number1").value);
             let b = Number(document.getElementById("number2").value);
             let op = document.getElementById("operator").value;
             let result;
+
+            if (document.getElementById("number1").value === "" ||
+                document.getElementById("number2").value === "") {
+                document.getElementById("result").innerHTML =
+                    " Please enter both numbers.";
+                return;
+            }
 
             if (op == "+") {
                 result = a + b;
