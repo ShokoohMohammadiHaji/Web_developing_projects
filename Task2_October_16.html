@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 2 Calculator</title>
+
+    <style>
+        input[type="number"] {
+            width: 100px;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Task 2 Calculator</h2>
+
+    <input type="number" id="number1" placeholder="First number">
+
+    <br><br>
+
+    <p>Choose an operation:</p>
+
+    <input type="radio" id="add" name="operator" value="+" checked>
+    <label for="add">Addition (+)</label><br>
+
+    <input type="radio" id="subtract" name="operator" value="-">
+    <label for="subtract">Subtract (-)</label><br>
+
+    <input type="radio" id="multiply" name="operator" value="*">
+    <label for="multiply">Multiplication (*)</label><br>
+
+    <input type="radio" id="divide" name="operator" value="/">
+    <label for="divide">Division (/)</label>
+
+    <br><br>
+
+    <input type="number" id="number2" placeholder="Second number">
+
+    <br><br>
+
+    <button id="calculate">=</button>
+    <span id="result"></span>
+
+    <script>
+        document.getElementById("calculate").onclick = function() {
+
+            let a = Number(document.getElementById("number1").value);
+            let b = Number(document.getElementById("number2").value);
+            let op = document.querySelector('input[name="operator"]:checked').value;
+            let result;
+
+            if (document.getElementById("number1").value === "" ||
+                document.getElementById("number2").value === "") {
+                document.getElementById("result").innerHTML =
+                    " Please enter both numbers.";
+                return;
+            }
+
+            if (op == "+") {
+                result = a + b;
+            } else if (op == "-") {
+                result = a - b;
+            } else if (op == "*") {
+                result = a * b;
+            } else if (op == "/") {
+                if (b == 0) {
+                    document.getElementById("result").innerHTML =
+                        " Cannot divide by zero!";
+                    return;
+                }
+                result = a / b;
+            }
+
+            document.getElementById("result").innerHTML = " " + result;
+        };
+    </script>
+
+</body>
+</html>
