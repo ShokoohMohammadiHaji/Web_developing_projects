@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+    <style>
+        body { 
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(145, 164, 127);
+            color :black;
+        }
+        input{
+            width: 200px;
+            height: 25px;
+            font-size: medium;
+        
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <h3>factorial of the given number</h3>
+    <input type="number" id="fac" value="" placeholder="Enter a number">
+    <button id="factorialButton">=</button>
+    <input type="text" id="factorialResult" readonly placeholder="The answer">
+    <br>
+    <br>
+    <h3>sum of the number's digits</h3>
+    <input type="number" id="sum" value="" placeholder="Enter a number">
+    <button id="sumButton">=</button>
+    <input type="text" id="sumResult" readonly placeholder="The answer">
+    <br>
+    <br>
+    <h3>Sum of odd and even</h3>
+    <select id = "operation">
+        <h2>Select one</option></h2>
+        <option value="odd">calculate sum of odd digits in number</option>
+        <option value="even">calculate sum of even digits in number</option>
+    </select>
+    <br>
+    <br>
+    <input type="number" id="oddEven" value="" placeholder="Enter a number">
+    <button id="oddEvenButton">=</button>
+    <input type="text" id="oddEvenResult" readonly placeholder="The answer">
+    <script>
+        document.getElementById("factorialButton").onclick = function(){
+        let  number = Number(document.getElementById("fac").value);
+        if (number<0){
+            document.getElementById("factorialResult").value = "Unspecified";
+        }
+        else {
+        document.getElementById("factorialResult").value = calculateFactorial(number);}
+        function calculateFactorial(n){
+        if (n == 0 ||n == 1 ){
+            return 1;}
+        else {
+         return n*calculateFactorial(n-1);
+       } 
+       }
+        }
+        document.getElementById("sumButton").onclick = function (){
+            let number = Number(document.getElementById("sum").value);
+            document.getElementById("sumResult").value = sumOfDigits(number);
+            function sumOfDigits(n){
+            let sumResult = 0
+            for (let i=1; i<=n;i++){
+                sumResult = sumResult + i
+            }
+            return sumResult
+        }
+        }
+        document.getElementById("oddEvenButton").onclick = function() {
+        let number = Number(document.getElementById("oddEven").value);
+        let choice = document.getElementById("operation").value;
+
+        if (choice == "odd") {
+            document.getElementById("oddEvenResult").value = sumOfOdd(number);
+        }
+        else {
+            document.getElementById("oddEvenResult").value = sumOfEven(number);
+        }
+        function sumOfOdd(n) {
+        let result = 0;
+        for (let i=0; i<=n ; i = i+2)
+            result += i
+
+        return result;
+        }
+         function sumOfEven(n) {
+        let result = 0;
+        for (let i=1; i<=n ; i = i+2)
+            result += i
+        return result;
+        }
+    }
+            // edit it the way when option of odd and even change the privious result of boxes be ommited
+
+    </script>
+</body>
+</html>
