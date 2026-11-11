@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Task</title>
+</head>
+
+<body>
+
+    <h1>String Task</h1>
+
+    <h2>L Counter:</h2>
+    <label for="userText1">Enter a string:</label>
+    <input type="text" id="userText1">
+    <button onclick="countLetter()">L Counter</button>
+    <p id="result1"></p>
+
+    <h2>Vowel Counter:</h2>
+    <label for="userText2">Enter a string:</label>
+    <input type="text" id="userText2">
+    <button onclick="VowelCounter()">Vowel Counter</button>
+    <p id="result2"></p>
+
+    <h2>Palindrome Checker:</h2>
+
+    <label for="userText3">Enter a word:</label>
+
+    <input type="text" id="userText3">
+
+    <button onclick="checkPalindrome()">Check</button>
+
+    <p id="result3"></p>
+
+<script>
+
+    function countLetter() {
+        let text = document.getElementById("userText1").value;
+        let count = 0;
+        let lowerText = text.toLowerCase();
+
+        for (let i = 0; i < lowerText.length; i++) {
+            if (lowerText[i] === "l") {
+                count++;
+            }
+        }
+
+        document.getElementById("result1").textContent =
+            text + " contains " + count + "xL characters";
+    }
+
+
+    function VowelCounter() {
+        let text = document.getElementById("userText2").value;
+        let count = 0;
+        let lowerText = text.toLowerCase();
+        let vowels = "aeiouyåäö";
+
+        for (let i = 0; i < lowerText.length; i++) {
+            if (vowels.includes(lowerText[i])) {
+                count++;
+            }
+        }
+
+        document.getElementById("result2").textContent =
+            text + " contains " + count + " vowels.";
+    }
+
+ 
+    function checkPalindrome() {
+        let text = document.getElementById("userText3").value;
+        let lowerText = text.toLowerCase();
+        let reverseText = lowerText.split("").reverse().join("");
+
+        if (lowerText === reverseText) {
+            document.getElementById("result3").textContent =
+                text + " is palindrome.";
+        }
+        else {
+            document.getElementById("result3").textContent =
+                text + " is NOT palindrome.";
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
